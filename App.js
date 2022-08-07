@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   TouchableOpacity,
   ImageBackground,
@@ -11,6 +11,7 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   TouchableWithoutFeedback,
+  Dimensions,
 } from 'react-native';
 
 import * as Font from 'expo-font';
@@ -31,6 +32,22 @@ export default function App() {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [state, setState] = useState(initialState);
   const [isReady, setIsReady] = useState(false);
+  const [dimensions, setDimensions] = useState(
+    Dimensions.get('window').width - 20 * 2
+  );
+
+  useEffect(() => {
+    const onChange = () => {
+      const width = Dimensions.get('window').width - 20 * 2;
+      // console.log('width', width);
+      setDimensions(width);
+    };
+    Dimensions.addEventListener('change', onChange);
+
+    return () => {
+      Dimensions.remove('change', onChange);
+    };
+  }, []);
 
   const keyboardHide = () => {
     setIsShowKeyboard(false);
@@ -64,6 +81,7 @@ export default function App() {
               style={{
                 ...styles.form,
                 marginBottom: isShowKeyboard ? 20 : 100,
+                width: dimensions,
               }}
             >
               <View style={styles.header}>
@@ -126,10 +144,10 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     // justifyContent: 'center',
     justifyContent: 'flex-end',
-    // alignItems: 'center',
+    alignItems: 'center',
   },
   form: {
-    marginHorizontal: 36,
+    // marginHorizontal: 36,
     // marginBottom: 100,
   },
   inputTitle: {
@@ -170,10 +188,10 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    marginBottom: 150,
+    marginBottom: 120,
   },
   headerTitle: {
-    fontSize: 30,
+    fontSize: 40,
     color: '#fff',
     fontFamily: 'MouseMemoirs-Regular',
   },
