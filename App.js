@@ -139,8 +139,8 @@ export default function App() {
           source={require('./assets/images/macos-big-sur.jpg')}
         >
           <KeyboardAvoidingView
-            // behavior={Platform.OS === 'ios' ? 'padding' : ''}
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            behavior={Platform.OS === 'ios' ? 'padding' : ''}
+            // behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           >
             <View
               style={{
