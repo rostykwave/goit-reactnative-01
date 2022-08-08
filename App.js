@@ -46,7 +46,8 @@ export default function App() {
         // Pre-load fonts, make any API calls you need to do here
         // await Font.loadAsync(Entypo.font);
         await Font.loadAsync({
-          'MouseMemoirs-Regular': require('./assets/fonts/MouseMemoirs-Regular.ttf'),
+          Roboto: require('./assets/fonts/Roboto/Roboto-Regular.ttf'),
+          // 'MouseMemoirs-Regular': require('./assets/fonts/MouseMemoirs-Regular.ttf'),
         });
         // Artificially delay for two seconds to simulate a slow loading
         // experience. Please remove this if you copy and paste the code!
@@ -257,6 +258,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 40,
     color: '#fff',
-    fontFamily: 'MouseMemoirs-Regular',
+    fontFamily: 'Roboto',
+    // fontFamily: 'MouseMemoirs-Regular',
   },
 });
