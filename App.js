@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import LoginScreen from './screens/auth/LoginScreen';
+import RegisterScreen from './screens/auth/RegisterScreen';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -49,7 +50,8 @@ export default function App() {
 
   return (
     <>
-      <LoginScreen onLayout={onLayoutRootView} />
+      {/* <LoginScreen onLayout={onLayoutRootView} /> */}
+      <RegisterScreen onLayout={onLayoutRootView} />
     </>
   );
 }
