@@ -20,7 +20,7 @@ const initialState = {
   nickname: '',
 };
 
-export default function RegisterScreen({ onLayout }) {
+export default function RegisterScreen() {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [state, setState] = useState(initialState);
 
@@ -55,7 +55,7 @@ export default function RegisterScreen({ onLayout }) {
 
   return (
     <TouchableWithoutFeedback onPress={keyboardHide}>
-      <View style={styles.container} onLayout={onLayout}>
+      <View style={styles.container}>
         <ImageBackground
           style={styles.image}
           source={require('../../assets/images/macos-big-sur.jpg')}

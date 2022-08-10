@@ -19,7 +19,7 @@ const initialState = {
   password: '',
 };
 
-export default function LoginScreen({ onLayout }) {
+export default function LoginScreen() {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [state, setState] = useState(initialState);
 
@@ -54,7 +54,7 @@ export default function LoginScreen({ onLayout }) {
 
   return (
     <TouchableWithoutFeedback onPress={keyboardHide}>
-      <View style={styles.container} onLayout={onLayout}>
+      <View style={styles.container}>
         <ImageBackground
           style={styles.image}
           source={require('../../assets/images/macos-big-sur.jpg')}
