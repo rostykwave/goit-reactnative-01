@@ -19,7 +19,7 @@ const initialState = {
   password: '',
 };
 
-export default function LoginScreen() {
+export default function LoginScreen({ onLayout }) {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [state, setState] = useState(initialState);
 
@@ -33,10 +33,15 @@ export default function LoginScreen() {
       // console.log('width', width);
       setDimensions(width);
     };
-    Dimensions.addEventListener('change', onChange);
+    // Dimensions.addEventListener('change', onChange);
+    const dimensionsSubscription = Dimensions.addEventListener(
+      'change',
+      onChange
+    );
 
     return () => {
-      Dimensions.removeEventListener('change', onChange);
+      // Dimensions?.removeEventListener('change', onChange);
+      dimensionsSubscription?.remove();
     };
   }, []);
 
@@ -49,7 +54,7 @@ export default function LoginScreen() {
 
   return (
     <TouchableWithoutFeedback onPress={keyboardHide}>
-      <View style={styles.container}>
+      <View style={styles.container} onLayout={onLayout}>
         <ImageBackground
           style={styles.image}
           source={require('../../assets/images/macos-big-sur.jpg')}
