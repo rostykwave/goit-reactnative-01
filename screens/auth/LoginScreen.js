@@ -19,7 +19,8 @@ const initialState = {
   password: '',
 };
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
+  console.log('navigation', navigation);
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [state, setState] = useState(initialState);
 
@@ -109,6 +110,18 @@ export default function LoginScreen() {
                 onPress={keyboardHide}
               >
                 <Text style={styles.buttonTitle}>Sign in</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Register')}
+                style={{ marginTop: 20, alignSelf: 'center' }}
+              >
+                <Text style={{ fontSize: 19, color: `#7fffd4` }}>
+                  New to application?{'  '}
+                  <Text style={{ fontSize: 20, color: `#ffebcd` }}>
+                    Sign Up
+                  </Text>
+                </Text>
               </TouchableOpacity>
             </View>
           </KeyboardAvoidingView>

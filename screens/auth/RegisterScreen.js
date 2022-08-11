@@ -20,7 +20,7 @@ const initialState = {
   nickname: '',
 };
 
-export default function RegisterScreen() {
+export default function RegisterScreen({ navigation }) {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [state, setState] = useState(initialState);
 
@@ -124,6 +124,18 @@ export default function RegisterScreen() {
                 onPress={keyboardHide}
               >
                 <Text style={styles.buttonTitle}>Sign up</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Login')}
+                style={{ marginTop: 20, alignSelf: 'center' }}
+              >
+                <Text style={{ fontSize: 19, color: `#7fffd4` }}>
+                  Already registered?{'  '}
+                  <Text style={{ fontSize: 20, color: `#ffebcd` }}>
+                    Sign In
+                  </Text>
+                </Text>
               </TouchableOpacity>
             </View>
           </KeyboardAvoidingView>
