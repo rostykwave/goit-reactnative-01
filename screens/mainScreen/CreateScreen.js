@@ -1,4 +1,5 @@
 import { Text, View, StyleSheet } from 'react-native';
+import { Camera, CameraType } from 'expo-camera';
 
 const CreateScreen = () => {
   return (
