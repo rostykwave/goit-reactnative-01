@@ -1,24 +1,16 @@
 import { useCallback, useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { View } from 'react-native';
+import { useRoute } from './router';
 
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
-import LoginScreen from './screens/auth/LoginScreen';
-import RegisterScreen from './screens/auth/RegisterScreen';
-import { View } from 'react-native';
-import PostScreen from './screens/mainScreen/PostScreen';
-import CreateScreen from './screens/mainScreen/CreateScreen';
-import ProfileScreen from './screens/mainScreen/ProfileScreen';
 
 SplashScreen.preventAutoHideAsync();
 
-const AuthStack = createNativeStackNavigator();
-const MainTab = createBottomTabNavigator();
-
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
+  const routing = useRoute(null);
 
   useEffect(() => {
     async function prepare() {
@@ -60,25 +52,7 @@ export default function App() {
 
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <NavigationContainer>
-        <MainTab.Navigator>
-          <MainTab.Screen name="Posts" component={PostScreen} />
-          <MainTab.Screen name="Create" component={CreateScreen} />
-          <MainTab.Screen name="Profile" component={ProfileScreen} />
-        </MainTab.Navigator>
-        {/* <AuthStack.Navigator>
-          <AuthStack.Screen
-            options={{ headerShown: false }}
-            name="Login"
-            component={LoginScreen}
-          />
-          <AuthStack.Screen
-            options={{ headerShown: false }}
-            name="Register"
-            component={RegisterScreen}
-          />
-        </AuthStack.Navigator> */}
-      </NavigationContainer>
+      <NavigationContainer>{routing}</NavigationContainer>
     </View>
   );
 }
