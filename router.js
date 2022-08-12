@@ -6,6 +6,10 @@ import RegisterScreen from './screens/auth/RegisterScreen';
 import PostScreen from './screens/mainScreen/PostScreen';
 import CreateScreen from './screens/mainScreen/CreateScreen';
 import ProfileScreen from './screens/mainScreen/ProfileScreen';
+//icons import
+import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 const AuthStack = createNativeStackNavigator();
 const MainTab = createBottomTabNavigator();
@@ -35,9 +39,33 @@ export const useRoute = isAuth => {
         tabBarShowLabel: false,
       }}
     >
-      <MainTab.Screen name="Posts" component={PostScreen} />
-      <MainTab.Screen name="Create" component={CreateScreen} />
-      <MainTab.Screen name="Profile" component={ProfileScreen} />
+      <MainTab.Screen
+        name="Posts"
+        component={PostScreen}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <MaterialIcons name="post-add" size={size} color={color} />
+          ),
+        }}
+      />
+      <MainTab.Screen
+        name="Create"
+        component={CreateScreen}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <Ionicons name="ios-create-outline" size={36} color={color} />
+          ),
+        }}
+      />
+      <MainTab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <AntDesign name="profile" size={size} color={color} />
+          ),
+        }}
+      />
     </MainTab.Navigator>
   );
 };
