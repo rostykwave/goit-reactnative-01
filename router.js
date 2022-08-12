@@ -29,7 +29,12 @@ export const useRoute = isAuth => {
   }
 
   return (
-    <MainTab.Navigator>
+    <MainTab.Navigator
+      screenOptions={{
+        // tabBarStyle: { position: 'absolute' },
+        tabBarShowLabel: false,
+      }}
+    >
       <MainTab.Screen name="Posts" component={PostScreen} />
       <MainTab.Screen name="Create" component={CreateScreen} />
       <MainTab.Screen name="Profile" component={ProfileScreen} />

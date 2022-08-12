@@ -10,7 +10,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
-  const routing = useRoute(null);
+  const routing = useRoute(true);
 
   useEffect(() => {
     async function prepare() {
